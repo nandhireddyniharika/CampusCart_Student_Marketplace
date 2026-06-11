@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CampusCart</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <div class="navbar">
+
+        <div class="logo">
+            CampusCart 🛒
+        </div>
+
+        <div class="right-menu">
+
+            <button onclick="toggleMenu()" class="menu-btn">
+
+                ☰
+
+            </button>
+
+            <div id="menu" class="dropdown">
+
+                <a href="/add_product">
+                    Add Product
+                </a>
+
+                <a href="/dashboard">
+                    Dashboard
+                </a>
+
+                <a href="/profile">
+                    Profile
+                </a>
+
+                <a href="/inbox">
+                    Inbox 📥
+                </a>
+                <a href="/wishlist">
+                    Wishlist ❤️
+                </a>
+            </div>
+
+            <a href="/notifications" class="logout-btn">
+
+                    🔔 {{ notification_count }}
+
+            </a>
+
+            <a href="/logout" class="logout-btn">
+
+                    Logout
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- WELCOME MESSAGE -->
+
+    <div id="welcomeBox" class="welcome-box">
+
+        <h2>
+            Welcome to CampusCart 🛒
+        </h2>
+
+        Logged in as
+
+        <b>{{ user }}</b>
+
+    </div>
+
+    <!-- LIVE SEARCH -->
+
+    <div class="search-container">
+
+        <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search products...">
+
+    </div>
+
+    <!-- PRODUCTS -->
+
+    <div class="products">
+
+        {% for p in products %}
+
+        <div class="card">
+
+            <img src="{{ url_for('uploaded_file', filename=p[6]) }}" class="product-image">
+
+            <h3>
+                {{ p[2] }}
+            </h3>
+
+            <p>
+                {{ p[3] }}
+            </p>
+
+            <p>
+                <b>Category:</b> {{ p[4] }}
+            </p>
+
+            <h2>
+                ₹{{ p[5] }}
+            </h2>
+
+            <!-- CONTACT SELLER -->
+
+            {% if p[1] != user %}
+
+            <a href="/chat/{{ p[1] }}" class="action-btn edit-btn">
+
+                Contact Seller 💬
+
+            </a>
+            <a href="/wishlist/{{ p[0] }}" class="action-btn sold-btn">
+                ❤️ Wishlist
+            </a> {% endif %}
+
+            <br><br>
+
+            <!-- SOLD STATUS -->
+
+            {% if p[7] == 'SOLD' %}
+
+            <div class="sold-badge">
+
+                SOLD OUT
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+
+    <script src="{{ url_for('static', filename='js/search.js') }}"></script>
+
+</body>
+
+</html>

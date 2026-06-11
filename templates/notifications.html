@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Notifications</title>
+
+    <link rel="stylesheet" href="{{ url_for('static',
+filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <div class="logo">
+
+            Notifications 🔔
+
+        </div>
+
+        <div>
+
+            <a href="/home" class="nav-btn">
+
+            Home
+
+        </a>
+
+        </div>
+
+    </div>
+
+    <div class="form-container">
+
+        {% for n in notifications %}
+
+        <div class="message">
+
+            {{ n[2] }}
+
+            <br>
+
+            <small>
+
+        {{ n[4] }}
+
+    </small>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Profile</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <div class="logo">
+            My Profile 👤
+        </div>
+
+        <div>
+
+            <a href="/home" class="nav-btn">
+            Home
+        </a>
+
+            <a href="/dashboard" class="nav-btn">
+            Dashboard
+        </a>
+
+            <a href="/logout" class="nav-btn">
+            Logout
+        </a>
+
+        </div>
+
+    </div>
+
+    <div class="profile-card">
+
+        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="profile-image">
+
+        <h2>{{ user[1] }}</h2>
+
+        <p>
+            <b>Email:</b> {{ user[2] }}
+        </p>
+
+        <hr>
+
+        <h3>
+            Total Products: {{ total_products }}
+        </h3>
+
+        <h3>
+            Sold Products: {{ sold_products }}
+        </h3>
+
+    </div>
+
+</body>
+
+</html>

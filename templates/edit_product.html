@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Edit Product</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <div class="logo">
+            Edit Product ✏️
+        </div>
+
+        <div>
+            <a href="/dashboard" class="nav-btn">
+            Dashboard
+        </a>
+
+            <a href="/home" class="nav-btn">
+            Home
+        </a>
+        </div>
+
+    </div>
+
+    <div class="form-container">
+
+        <form method="POST" enctype="multipart/form-data">
+
+            <h2>Update Product</h2>
+
+            <input type="text" name="title" value="{{ product[2] }}" required>
+
+            <br><br>
+
+            <textarea name="description" required>{{ product[3] }}</textarea>
+
+            <br><br>
+
+            <select name="category" required>
+
+            <option value="{{ product[4] }}">
+                {{ product[4] }}
+            </option>
+
+            <option>Electronics</option>
+            <option>Books</option>
+            <option>Cycle</option>
+            <option>Hostel Essentials</option>
+            <option>Lab Equipment</option>
+            <option>Others</option>
+
+        </select>
+
+            <br><br>
+
+            <input type="number" name="price" value="{{ product[5] }}" required>
+
+            <br><br>
+
+            <p>Current Image</p>
+
+            <img src="/uploads/{{ product[6] }}" width="200">
+
+            <br><br>
+
+            <label>
+            Upload New Image (Optional)
+        </label>
+
+            <br><br>
+
+            <input type="file" name="image" accept="image/*">
+
+            <br><br>
+
+            <button type="submit">
+            Update Product
+        </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

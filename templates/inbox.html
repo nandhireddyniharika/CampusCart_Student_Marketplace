@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Inbox</title>
+</head>
+
+<body>
+
+    <h2>Inbox 📥</h2>
+
+    {% for u in users %}
+
+    <p>
+
+        <a href="/chat/{{ u[0] }}">
+
+{{ u[0] }}
+
+</a>
+
+    </p>
+
+    {% endfor %}
+
+</body>
+
+</html>

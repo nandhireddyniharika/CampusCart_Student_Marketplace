@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Wishlist</title>
+
+    <link rel="stylesheet" href="{{ url_for('static',
+filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <div class="logo">
+
+            Wishlist ❤️
+
+        </div>
+
+        <div>
+
+            <a href="/home" class="nav-btn">
+
+            Home
+
+        </a>
+
+        </div>
+
+    </div>
+
+    <div class="products">
+
+        {% for p in products %}
+
+        <div class="card">
+
+            <img src="/uploads/{{ p[6] }}" class="product-image">
+
+            <h3>{{ p[2] }}</h3>
+
+            <p>{{ p[3] }}</p>
+
+            <h2>₹{{ p[5] }}</h2>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</body>
+
+</html>

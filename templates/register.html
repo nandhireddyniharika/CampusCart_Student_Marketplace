@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>CampusCart Register</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <div class="login-card">
+
+            <h1>CampusCart 🛒</h1>
+
+            <h3>Create Account</h3>
+
+            {% with messages = get_flashed_messages() %} {% if messages %} {% for msg in messages %}
+            <div class="alert">
+                {{ msg }}
+            </div>
+            {% endfor %} {% endif %} {% endwith %}
+
+            <form method="POST">
+
+                <input type="text" name="name" placeholder="Full Name" required>
+
+                <br><br>
+
+                <input type="email" name="email" placeholder="123456789@sastra.ac.in" required>
+
+                <br><br>
+
+                <input type="password" name="password" placeholder="Password" required>
+
+                <br><br>
+
+                <button type="submit">
+                Register
+            </button>
+
+            </form>
+
+            <br>
+
+            <p>
+
+                Already Registered?
+
+                <a href="/login">
+
+                Login Here
+
+            </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <div class="logo">
+            My Dashboard 📊
+        </div>
+
+        <div>
+
+            <a href="/home" class="nav-btn">
+            Home
+        </a>
+
+            <a href="/logout" class="nav-btn">
+            Logout
+        </a>
+
+        </div>
+
+    </div>
+
+    <h2 style="text-align:center;">
+        My Products
+    </h2>
+
+    <div class="products">
+
+        {% for p in products %}
+
+        <div class="card">
+
+            <img src="/uploads/{{ p[6] }}" class="product-image">
+
+            <h3>
+                {{ p[2] }}
+            </h3>
+
+            <p>
+                {{ p[3] }}
+            </p>
+
+            <p>
+                Category: {{ p[4] }}
+            </p>
+
+            <h2>
+                ₹{{ p[5] }}
+            </h2>
+
+            {% if p[7] == 'SOLD' %}
+
+            <div class="sold-badge">
+                SOLD OUT
+            </div>
+
+            {% else %}
+
+            <a href="/soldout/{{ p[0] }}" class="action-btn sold-btn">
+
+            Mark Sold
+
+        </a> {% endif %}
+
+            <br><br>
+
+            <a href="/edit/{{ p[0] }}" class="action-btn edit-btn">
+
+        Edit
+
+    </a>
+
+            <a href="/delete/{{ p[0] }}" class="action-btn delete-btn" onclick="return confirm('Delete Product?')">
+
+        Delete
+
+    </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</body>
+
+</html>
